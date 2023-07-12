@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="col-9" align="right">
-                <a href="{{ route('member.create') }}" class="btn btn-sm mycolor1">추가</a>
+                <a href="{{ route('member.create') }}{{$tmp}}" class="btn btn-sm mycolor1">추가</a>
             </div>
         </div>
     </form>
@@ -50,7 +50,7 @@
                 <tr>
                     <td>{{ $row->id }}</td>
                     <td>
-                        <a href="{{ route('member.show', $row->id) }}">{{ $row->name }}</a>
+                        <a href="{{ route('member.show', $row->id) }}{{$tmp}}">{{ $row->name }}</a>
                     </td>
                     <td>{{ $row->uid }}</td>
                     <td>{{ $row->pwd }}</td>

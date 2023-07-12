@@ -1,7 +1,7 @@
 @extends('main')
 {{-- 내용 --}}
 @section('content')
-    <form name="form1" method="post" action="{{ route('member.update', $row->id) }}">
+    <form name="form1" method="post" action="{{ route('member.update', $row->id) }}{{$tmp}}">
         @csrf
         @method('PATCH')
         <div class="container-fluid mt-2" style="width: 450px;">

@@ -1,7 +1,7 @@
 @extends('main')
 {{-- 내용 --}}
 @section('content')
-    <form name="form1" method="post" action="{{ route('member.store') }}">
+    <form name="form1" method="post" action="{{ route('member.store') }}{{$tmp}}">
         @csrf
         <div class="container-fluid mt-2" style="width: 450px;">
             <table class="table table-bordered table-sm m-5">
