@@ -5,25 +5,25 @@
 
     <script>
         function find_txt() {
-            form1.action = "#"
+            form1.action = "{{ route('member.index') }}"
             form1.submit();
         }
     </script>
-
-        <div class="row align-items-center">
-            <div class="col-3 text-end">
+    <form name="form1" action="" method="get">
+        <div class="row">
+            <div class="col-3" align="left">
                 <div class="input-group input-group-sm">
                     <span class="input-group-text">이름</span>
-                    <input type="text" class="form-control" onkeydown="if (event.keyCode==13) { find_txt() }"
-                        placeholder="찾을 이름" aria-label="Username" aria-describedby="basic-addon1">
-                    <button class="btn mycolor1" type="button" onclick="find_txt()">검색</button>
+                    <input class="form-control" type="text" name="text1" value=""
+                        onkeydown="if(event.keyCode == 13) {find_text();}">
+                    <button class="btn mycolor1 ms-1" type="button" onclick="find_text()">검색</button>
                 </div>
             </div>
-            <div class="col-3 align-items-end">
-                <a href="{{ route('member.create') }}" class="btn btn-sm btn-primary">추가</a>
+            <div class="col-9" align="right">
+                <a href="{{ route('member.create') }}" class="btn btn-sm mycolor1">추가</a>
             </div>
         </div>
-
+    </form>
 
 
     <table class="table">
@@ -61,18 +61,10 @@
         </tbody>
     </table>
     <hr>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center my-5">
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-            </li>
-            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-            </li>
-        </ul>
-    </nav>
+    <div class="row">
+        <div class="col">
+            {{ $list->links('mypagination') }}
+        </div>
+    </div>
     </div>
 @endsection

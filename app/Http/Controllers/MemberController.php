@@ -13,14 +13,17 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $data['list'] = $this->getlist();
+        $text1 = request('text1'); //text1의 값을 알아냄
+        $data['text1'] = $text1;
+        $data['list'] = $this->getlist($text1);
         return view('member.index', $data);
     }
 
-    public function getlist()
+    public function getlist($text1)
     {
-        $sql = "select * from `members` order by name;";
-        $result = DB::select($sql);
+        $result = Member::where('name', 'like', '%' . $text1 . '%')
+            ->orderby('name', 'asc')
+            ->paginate(5)->appends(['text1' => $text1]);
         return $result;
     }
     /**
@@ -36,19 +39,8 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        $tel1 = $request->input("tel1");
-        $tel2 = $request->input("tel2");
-        $tel3 = $request->input("tel3");
-        $tel = sprintf("%-3s%-4s%-4s", $tel1, $tel2, $tel3);
         $row = new Member;
-
-        $row->uid = $request->input('uid');
-        $row->pwd = $request->input('pwd');
-        $row->name = $request->input('name');
-        $row->tel = $tel;
-        $row->rank = $request->input('rank');
-
-        $row->save();
+        $this->save_row($request, $row);
         return redirect('member');
     }
 
@@ -66,7 +58,8 @@ class MemberController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data['row'] = Member::find($id); //자료 찾기
+        return view('member.edit', $data); //수정화면 호출
     }
 
     /**
@@ -74,7 +67,9 @@ class MemberController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $row = Member::find($id); //자료찾기
+        $this->save_row($request, $row);
+        return redirect('member');
     }
 
     /**
@@ -84,5 +79,47 @@ class MemberController extends Controller
     {
         Member::find($id)->delete();
         return redirect('member');
+    }
+    public function
+    save_row(Request $request, $row)
+    {
+        $request->validate(
+            [
+                'uid' => 'required|max:20',
+                'pwd' => 'required|max:20',
+                'name' => 'required|max:20',
+                'tel' => 'max:20',
+                'rank' => 'max:20',
+            ],
+            [
+                'uid.required' => '아이디는 필수 입력입니다.',
+                'pwd.required' => '비밀번호는 필수 입력입니다.',
+                'name.required' => '이름은 필수 입력입니다.',
+                'tel.max' => '20자 이내로 입력하세요.',
+                'rank.max' => '20자 이내로 입력하세요.',
+            ]
+        );
+
+        $tel1 = $request->input("tel1");
+        $tel2 = $request->input("tel2");
+        $tel3 = $request->input("tel3");
+        $tel = sprintf("%-3s%-4s%-4s", $tel1, $tel2, $tel3);
+
+        $row->uid = $request->input('uid'); //자료수정
+        $row->pwd = $request->input('pwd');
+        $row->name = $request->input('name');
+        $row->tel = $tel;
+        $row->rank = $request->input('rank');
+
+        $row->save(); // 수정모드 
+        return redirect('member');
+    }
+
+    public function qstring()
+    {
+        $text1 = request("text1") ? request('text1') : "";
+        $page = request("page") ? request('page') : "";
+        $tmp = $text1 ? "? text1 =$text1&page=page" : "?page= $page";
+        return  $tmp;
     }
 }

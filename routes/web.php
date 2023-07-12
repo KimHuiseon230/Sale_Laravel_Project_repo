@@ -17,9 +17,7 @@ use League\CommonMark\Extension\Footnote\Node\FootnoteContainer;
 */
 
 // Route::get('/', [MessageFormatter::class, 'index']);
- Route::get('/',function() {
+Route::get('/', function () {
   return view('main');
- });
-
-// Route::get('/member', [MemberController::class, 'index']);
+});
 Route::resource('member', MemberController::class);

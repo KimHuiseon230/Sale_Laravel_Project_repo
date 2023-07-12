@@ -48,7 +48,7 @@
                 </thead>
             </table>
             <div class="container" align="center">
-                <a href="#" class="btn btn-sm mycolor1">수정</a>
+                <a href="{{ route('member.edit', $row->id) }}" class="btn btn-sm mycolor1">수정</a>
                 <form action="{{ route('member.destroy', $row->id) }}">
                     @csrf
                     @method('DELETE')
