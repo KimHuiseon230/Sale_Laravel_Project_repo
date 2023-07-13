@@ -45,7 +45,7 @@ class MemberController extends Controller
         $this->save_row($request, $row);
 
         $tmp = $this->qstring();
-        return redirect('member',$tmp);
+        return redirect('member' . $tmp);
     }
 
     /**
@@ -77,7 +77,7 @@ class MemberController extends Controller
         $this->save_row($request, $row);
 
         $tmp = $this->qstring();
-        return redirect('member', $tmp);
+        return redirect('member'. $tmp);
     }
 
     /**
@@ -87,7 +87,7 @@ class MemberController extends Controller
     {
         Member::find($id)->delete();
         $tmp = $this->qstring();
-        return redirect('member',$tmp);
+        return redirect('member'.$tmp);
     }
     public function
     save_row(Request $request, $row)
@@ -106,6 +106,7 @@ class MemberController extends Controller
                 'name.required' => '이름은 필수 입력입니다.',
                 'tel.max' => '20자 이내로 입력하세요.',
                 'rank.max' => '20자 이내로 입력하세요.',
+                'name.max' => '20자 이내로 입력하세요.'
             ]
         );
 
@@ -128,7 +129,7 @@ class MemberController extends Controller
     {
         $text1 = request("text1") ? request('text1') : "";
         $page = request("page") ? request('page') : "";
-        $tmp = $text1 ? "? text1 =$text1&page=page" : "?page= $page";
+        $tmp = $text1 ? "? text1 =$text1&page=$page" : "?page= $page";
         return  $tmp;
     }
 }

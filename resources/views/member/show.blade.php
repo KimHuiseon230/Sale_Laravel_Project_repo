@@ -8,47 +8,47 @@
     $tel = $tel1 . '-' . $tel2 . '-' . $tel3;
     $rank = $row->rank == 0 ? '직원' : '관리자';
     ?>
-    <form  name="form1" method="post" action="">
-        <div class="container-fluid mt-2" style="width: 450px;">
-            <table class="table table-bordered table-sm m-5">
+    <form name="form1" method="post" action="">
+        <div class="container mt-2">
+            <table class="table table-sm table-bordered table-hover mymargin5">
                 <thead>
                     <tr>
-                        <th style="width: 20%; text-align: center;">번호</th>
+                        <td style="width: 20%;" class="mycolor2" >번호</td>
                         <td style="width: 80%;">{{ $row->id }}</td>
                     </tr>
                     <tr>
-                        <th style="width: 20%; text-align: center;">이름</th>
+                        <td style="width: 20%;" class="mycolor2">이름</td>
                         <td style="width: 80%;">
                             {{ $row->name }}
                         </td>
                     </tr>
                     <tr>
-                        <th style="width: 20%; text-align: center;">아이디</th>
+                        <td style="width: 20%;" class="mycolor2">아이디</td>
                         <td style="width: 80%;">
                             {{ $row->uid }}
 
                         </td>
                     </tr>
                     <tr>
-                        <th style="width: 20%; text-align: center;">암호</th>
+                        <td style="width: 20%;" class="mycolor2">암호</td>
                         <td style="width: 80%;">
                             {{ $row->pwd }}
                         </td>
                     </tr>
                     <tr>
-                        <th style="width: 20%; text-align: center;">전화</th>
+                        <td style="width: 20%;" class="mycolor2">전화</td>
                         <td colspan="3">
                             {{ $tel }}
                         </td>
                     </tr>
                     <tr>
-                        <th style="width: 20%; text-align: center;">등급</th>
+                        <td style="width: 20%;" class="mycolor2">등급</td>
                         <td style="width: 80%;">{{ $rank }}</td>
                     </tr>
                 </thead>
             </table>
-            <div class="container" align="center">
-                <a href="{{ route('member.edit', $row->id) }}{{$tmp}}" class="btn btn-sm mycolor1">수정</a>
+            <div align="center">
+                <a href="{{ route('member.edit', $row->id) }}" class="btn btn-sm mycolor1">수정</a>
                 <form action="{{ route('member.destroy', $row->id) }}">
                     @csrf
                     @method('DELETE')
@@ -58,6 +58,6 @@
                 <input href="#" type="submit" class="btn btn-sm mycolor1" value="저장">
                 <input href="#" type="submit" class="btn btn-sm mycolor1" value="이전화면">
             </div>
-
+        </div>
     </form>
 @endsection

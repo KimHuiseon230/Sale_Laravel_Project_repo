@@ -41,10 +41,10 @@
                          </a>
                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                              <li>
-                                 <a class="dropdown-item" href="#">구분</a>
+                                 <a class="dropdown-item" href="{{ route('gubun.index') }}">구분</a>
                              </li>
                              <li>
-                                 <a class="dropdown-item" href="#">제품</a>
+                                 <a class="dropdown-item" href="{{ route('product.index') }}">제품</a>
                              </li>
                              <li>
                                  <a class="dropdown-item" href="{{ route('member.index') }}">사용자</a>

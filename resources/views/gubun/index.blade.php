@@ -1,11 +1,10 @@
 @extends('main')
 {{-- 내용 --}}
 @section('content')
-    <div class="alert mycolor1" role="alert">사용자</div>
-
+    <div class="alert mycolor1" role="alert">구분</div>
     <script>
         function find_txt() {
-            form1.action = "{{ route('member.index') }}"
+            form1.action = "{{ route('gubun.index') }}"
             form1.submit();
         }
     </script>
@@ -20,42 +19,24 @@
                 </div>
             </div>
             <div class="col-9" align="right">
-                <a href="{{ route('member.create') }}{{$tmp}}" class="btn btn-sm mycolor1">추가</a>
+                <a href="{{ route('gubun.create') }}{{ $tmp }}" class="btn btn-sm mycolor1">추가</a>
             </div>
         </div>
     </form>
-
-
     <table class="table table-sm table-bordered table-hover mymargin5">
         <thead>
-            <tr class="mycolor2">
-                <th scope="col">#</th>
-                <th scope="col">이름</th>
-                <th scope="col">아이디</th>
-                <th scope="col">암호</th>
-                <th scope="col">전화번호</th>
-                <th scope="col">등급</th>
+            <tr  class="mycolor2">
+                <th scope="col">번호</th>
+                <th cope="col">구분명</th>
             </tr>
         </thead>
-
         <tbody>
             @foreach ($list as $row)
-                <?php
-                $tel1 = trim(substr($row->tel, 0, 3));
-                $tel2 = trim(substr($row->tel, 3, 4));
-                $tel3 = trim(substr($row->tel, 7, 4));
-                $tel = $tel1 . '-' . $tel2 . '-' . $tel3;
-                $rank = $row->rank == 0 ? '직원' : '관리자';
-                ?>
                 <tr>
                     <td>{{ $row->id }}</td>
                     <td>
-                        <a href="{{ route('member.show', $row->id) }}{{$tmp}}">{{ $row->name }}</a>
+                        <a href="{{ route('gubun.show', $row->id) }}{{ $tmp }}">{{ $row->name }}</a>
                     </td>
-                    <td>{{ $row->uid }}</td>
-                    <td>{{ $row->pwd }}</td>
-                    <td>{{ $tel }}</td>
-                    <td>{{ $rank }}</td>
                 </tr>
             @endforeach
         </tbody>
