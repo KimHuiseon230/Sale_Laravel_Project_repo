@@ -14,16 +14,17 @@
 
     <script src="{{ asset('my/js/moment-with-locales.min.js') }}"></script>
     <script src="{{ asset('my/js/bootstrap5-datetimepicker.min.js') }}"></script>
-    <script src="{{ asset('my/js/bootstrap5-datetimepicker.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('my/css/bootstrap5-datetimepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('my/css/all.min.css') }}">
 </head>
 
 <body>
-    @include('inc.nav')
     {{-- 본문부분 --}}
     @yield('content')
     {{-- 푸터부분 --}}
+    <div class="container">
+
+    </div>
     {{-- @include('inc.footer') --}}
     {{-- 자바스크립트 추가, js --}}
     @yield('before_body_end_tag')

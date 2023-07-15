@@ -4,7 +4,7 @@
     <div class="alert mycolor1" role="alert">사용자</div>
 
     <script>
-        function find_txt() {
+        function find_text() {
             form1.action = "{{ route('member.index') }}"
             form1.submit();
         }

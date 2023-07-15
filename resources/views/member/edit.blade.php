@@ -1,5 +1,6 @@
 @extends('main')
 {{-- 내용 --}}
+d
 @section('content')
     <form name="form1" method="post" action="{{ route('member.update', $row->id) }}{{ $tmp }}">
         @csrf

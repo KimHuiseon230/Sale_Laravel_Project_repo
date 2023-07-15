@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('jangbus', function (Blueprint $table) {
             $table->id();
+            $table->tinyInteger('io')->nullable();
+            $table->date('writeday')->nullable();
+            $table->integer('products_id')->nullable();
+            $table->integer('price')->nullable();
+            $table->integer('numi')->nullable();
+            $table->integer('numo')->nullable();
+            $table->integer('prices')->nullable();
+            $table->string('bigo',20)->nullable();
             $table->timestamps();
         });
     }

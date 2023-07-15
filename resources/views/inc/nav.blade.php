@@ -9,10 +9,10 @@
              <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                  <ul class="navbar-nav me-auto">
                      <li class="nav-item">
-                         <a class="nav-link" href="#">매입</a>
+                         <a class="nav-link" href="{{ route('jangbui.index') }}">매입</a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link" href="#">매출</a>
+                         <a class="nav-link"  href="{{ route('jangbuo.index') }}">매출</a>
                      </li>
                      <li class="nav-item">
                          <a class="nav-link" href="#">기간조회</a>

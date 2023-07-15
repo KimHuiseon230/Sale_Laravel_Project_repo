@@ -1,17 +1,24 @@
-@extends('main')
+@extends('main_nomenu')
 {{-- 내용 --}}
 @section('content')
-    <div class="alert mycolor1" role="alert">구분</div>
+    <div class="alert mycolor1" role="alert">제품선택</div>
 
     <script>
         function find_text() {
-            form1.action = "{{ route('product.index') }}"
+            form1.action = "{{ route('findproduct.index') }}"
             form1.submit();
+        }
+
+        function SendProduct(id, name, price) {
+            opener.form1.products_id.value = id;
+            opener.form1.products_name.value = name;
+            opener.form1.price.value = price;
+            opener.form1.prices.value = Number(price) * Number(opener.form1.numo.value);
         }
     </script>
     <form name="form1" action="" method="get">
         <div class="row">
-            <div class="col-3" align="left">
+            <div class="col-6" align="left">
                 <div class="input-group input-group-sm">
                     <span class="input-group-text">이름</span>
                     <input class="form-control" type="text" name="text1" value=""
@@ -19,8 +26,8 @@
                     <button class="btn mycolor1 ms-1" type="button" onclick="find_text()">검색</button>
                 </div>
             </div>
-            <div class="col-9" align="right">
-                <a href="{{ route('product.create') }}" class="btn btn-sm mycolor1">추가</a>
+            <div class="col-6" align="right">
+
             </div>
         </div>
     </form>
@@ -39,12 +46,12 @@
                 <tr>
                     <td>{{ $row->id }}</td>
                     <td>{{ $row->gubun_name }}</td>
-                    <td>
-                        <a href="{{ route('product.show', $row->id) }}">{{ $row->name }}</a>
+                    <td onclick="   window.close();">
+                        <a href="javascript:SendProduct({{ $row->id }},'{{ $row->name }}',{{ $row->price }});">{{ $row->name }}</a>
+                    
                     </td>
-                    <td>{{ $row->price }}</td>
+                    <td>{{ $row->prices }}</td>
                     <td>{{ $row->jaego }}</td>
-
                 </tr>
             @endforeach
         </tbody>
