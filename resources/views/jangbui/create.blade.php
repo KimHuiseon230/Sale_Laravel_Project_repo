@@ -1,8 +1,8 @@
 @extends('main')
+{{-- 내용 --}}
 @section('content')
     <br>
     <div class="alert mycolor1" role="alert">매입</div>
-
     <script>
         $(function() {
             $("#writeday").datetimepicker({
@@ -35,7 +35,6 @@
 
     <form name="form1" action="{{ route('jangbui.store') }}{{ $tmp }}" method="post">
         @csrf
-
         <table class="table table-bordered table-sm mymargin5">
             <tr>
                 <td width="20%" class="mycolor2">
@@ -89,7 +88,7 @@
                 <td width="20%" class="mycolor2">단가</td>
                 <td width="80%" align="left">
                     <div class="d-inline-flex">
-                        <input type="text" name="price" size="20" value=""
+                        <input type="text" name="price" size="20" value="{{ old('price') }}"
                             class="form-select form-control-sm" onchange="cal_prices()">
                     </div>
                 </td>
@@ -99,7 +98,7 @@
                 </td>
                 <td width="80%" align="left">
                     <div class="d-inline-flex">
-                        <input type="text" name="numi" size="20" value=""
+                        <input type="text" name="numi" size="20" value="{{ old('numi') }}"
                             class="form-select form-control-sm" onchange="cal_prices()">
                     </div>
                 </td>
@@ -108,7 +107,7 @@
                 <td width="20%" class="mycolor2">금액</td>
                 <td width="80%" align="left">
                     <div class="d-inline-flex">
-                        <input type="text" name="prices" size="20" value=""
+                        <input type="text" name="prices" size="20" value="{{ old('prices') }}"
                             class="form-select form-control-sm" readonly>
                     </div>
                 </td>
@@ -122,9 +121,7 @@
                     </div>
                 </td>
             </tr>
-
         </table>
-
         <div align="center">
             <input type="submit" value="저장" class="btn btn-sm mycolor1" />&nbsp;
             <input type="button" value="이전화면" class="btn btn-sm mycolor1" onclick="history.back();" />

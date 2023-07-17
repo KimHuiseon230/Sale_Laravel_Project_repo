@@ -12,10 +12,10 @@
                          <a class="nav-link" href="{{ route('jangbui.index') }}">매입</a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link"  href="{{ route('jangbuo.index') }}">매출</a>
+                         <a class="nav-link" href="{{ route('jangbuo.index') }}">매출</a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link" href="#">기간조회</a>
+                         <a class="nav-link" href="{{ route('gigan.index') }}">기간조회</a>
                      </li>
                      <li class="nav-item dropdown">
                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -24,13 +24,13 @@
                          </a>
                          <ul class="dropdown-menu dropdown-menu-dark">
                              <li>
-                                 <a class="dropdown-item" href="#">Best 제품</a>
+                                 <a class="dropdown-item" href="{{ route('best.index') }}">Best 제품</a>
                              </li>
                              <li>
-                                 <a class="dropdown-item" href="#">월별제품별현황</a>
+                                 <a class="dropdown-item" href="{{ route('crosstab.index') }}">월별제품별현황</a>
                              </li>
                              <li>
-                                 <a class="dropdown-item" href="#">종류별분포도</a>
+                                 <a class="dropdown-item" href="{{ route('chart.index') }}">종류별분포도</a>
                              </li>
                          </ul>
                      </li>

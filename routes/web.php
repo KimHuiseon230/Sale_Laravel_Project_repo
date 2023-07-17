@@ -6,6 +6,10 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\JangbuiController;
 use App\Http\Controllers\JangbuoController;
 use App\Http\Controllers\FindproductController;
+use App\Http\Controllers\GiganController;
+use App\Http\Controllers\BestController;
+use App\Http\Controllers\CrosstabController;
+use App\Http\Controllers\ChartController;
 
 use App\Models\Member;
 use Illuminate\Support\Facades\Route;
@@ -32,3 +36,7 @@ Route::resource('product', ProductController::class);
 Route::resource('jangbui', JangbuiController::class);
 Route::resource('jangbuo', JangbuoController::class);
 Route::resource('findproduct', FindproductController::class);
+Route::resource('gigan', GiganController::class);
+Route::resource('best', BestController::class);
+Route::resource('crosstab', CrosstabController::class);
+Route::resource('chart', ChartController::class);

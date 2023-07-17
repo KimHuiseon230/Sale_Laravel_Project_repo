@@ -37,11 +37,10 @@
                 <form action="{{ route('jangbui.destroy', $row->id) }}">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" href="#" class="btn btn-sm mycolor1"
-                        onclick="return confirm('삭제할까요?');">삭제</button>
+                    <button type="submit" class="btn btn-sm mycolor1" onclick="return confirm('삭제할까요 ?');">삭제</button>
+                    &nbsp;
                 </form>
-                <input type="submit" class="btn btn-sm mycolor1" value="저장">
-                <input type="button" class="btn btn-sm mycolor1" value="이전화면" onclick="history.back();">
+                <input type="button" value="이전화면" class="btn btn-sm mycolor1" onclick="history.back();">
             </div>
     </form>
 @endsection

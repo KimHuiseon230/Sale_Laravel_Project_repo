@@ -1,47 +1,83 @@
 @extends('main')
 {{-- 내용 --}}
 @section('content')
-    <div class="alert mycolor1" role="alert">매출</div>
-    <form name="form1" method="post" action="">
-        <div class="container mt-2">
-            <table class="table table-sm table-bordered table-hover mymargin5">
-                <thead>
-                    <tr>
-                        <td style="width: 20%;" class="mycolor2">날짜</td>
-                        <td style="width: 80%;" align="left">{{ $row->writeday }}</td>
-                    </tr>
-                    <tr>
-                        <td style="width: 20%;" class="mycolor2" style="color: red">제품명</td>
-                        <td style="width: 80%;" align="left">{{ $row->product_name }}</td>
-                    </tr>
-                    <tr>
-                        <td style="width: 20%;" class="mycolor2" style="color: red">단가</td>
-                        <td style="width: 80%;" align="left">{{ $row->price }}</td>
-                    </tr>
-                    <tr>
-                        <td style="width: 20%;" class="mycolor2">수량</td>
-                        <td style="width: 80%;" align="left">{{ $row->numo }}</td>
-                    </tr>
-                    <tr>
-                        <td style="width: 20%;" class="mycolor2">금액</td>
-                        <td style="width: 80%;" align="left">{{ $row->prices }}</td>
-                    </tr>
-                    <tr>
-                        <td style="width: 20%;" class="mycolor2">비고</td>
-                        <td style="width: 80%;" align="left">{{ $row->bigo }}</td>
-                    </tr>
-                </thead>
-            </table>
-            <div align="center">
-                <a href="{{ route('jangbuo.edit', $row->id) }}" class="btn btn-sm mycolor1">수정</a>
-                <form action="{{ route('jangbuo.destroy', $row->id) }}">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" href="#" class="btn btn-sm mycolor1"
-                        onclick="return confirm('삭제할까요?');">삭제</button>
-                </form>
-                <input type="submit" class="btn btn-sm mycolor1" value="저장">
-                <input type="button" class="btn btn-sm mycolor1" value="이전화면" onclick="history.back();">
-            </div>
+    <br>
+    <div class="alert mycolor1" role="alert">사용자</div>
+    <form name="form1" action="{{ route('member.store') }}{{ $tmp }}" method="post">
+        @csrf
+        <table class="table table-bordered table-sm mymargin5">
+            <tr>
+                <td width="20%" class="mycolor2">번호</td>
+                <td width="80%" align="left"></td>
+            </tr>
+            <tr>
+                <td width="20%" class="mycolor2">
+                    <font color="red">*</font> 이름
+                </td>
+                <td width="80%" align="left">
+                    <div class="d-inline-flex">
+                        <input type="text" name="name" size="20" maxlength="20" value="{{ old('name') }}"
+                            class="form-control form-control-sm" />
+                    </div>
+                    @error('name')
+                        {{ $message }}
+                    @enderror
+                </td>
+            </tr>
+            <tr>
+                <td width="20%" class="mycolor2">
+                    <font color="red">*</font> 아이디
+                </td>
+                <td width="80%" align="left">
+                    <div class="d-inline-flex">
+                        <input type="text" name="uid" size="20" maxlength="20" value="{{ old('uid') }}"
+                            class="form-control form-control-sm" />
+                    </div>
+                    @error('uid')
+                        {{ $message }}
+                    @enderror
+                </td>
+            </tr>
+            <tr>
+                <td width="20%" class="mycolor2">
+                    <font color="red">*</font> 암호
+                </td>
+                <td width="80%" align="left">
+                    <div class="d-inline-flex">
+                        <input type="text" name="pwd" size="20" maxlength="20" value="{{ old('pwd') }}"
+                            class="form-control form-control-sm" />
+                    </div>
+                    @error('pwd')
+                        {{ $message }}
+                    @enderror
+                </td>
+            </tr>
+            <tr>
+                <td width="20%" class="mycolor2">전화</td>
+                <td width="80%" align="left">
+                    <div class="d-inline-flex">
+                        <input type="text" name="tel1" size="3" maxlength="3" value=""
+                            class="form-control form-control-sm" /> -
+                        <input type="text" name="tel2" size="4" maxlength="4" value=""
+                            class="form-control form-control-sm" /> -
+                        <input type="text" name="tel3" size="4" maxlength="4" value=""
+                            class="form-control form-control-sm" />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td width="20%" class="mycolor2">등급</td>
+                <td width="80%" align="left">
+                    <div class="d-inline-flex">
+                        <input type="radio" name="rank" value="0" checked />&nbsp;직원&nbsp;&nbsp;
+                        <input type="radio" name="rank" value="1" />&nbsp;관리자
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div align="center">
+            <input type="submit" value="저장" class="btn btn-sm mycolor1" />&nbsp;
+            <input type="button" value="이전화면" class="btn btn-sm mycolor1" onclick="history.back();" />
+        </div>
     </form>
 @endsection
