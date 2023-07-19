@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\GubunController;
 use App\Http\Controllers\ProductController;
@@ -10,9 +11,10 @@ use App\Http\Controllers\GiganController;
 use App\Http\Controllers\BestController;
 use App\Http\Controllers\CrosstabController;
 use App\Http\Controllers\ChartController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PictureController;
 
-use App\Models\Member;
-use Illuminate\Support\Facades\Route;
+
 use League\CommonMark\Extension\Footnote\Node\FootnoteContainer;
 
 /*
@@ -25,18 +27,22 @@ use League\CommonMark\Extension\Footnote\Node\FootnoteContainer;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-// Route::get('/', [MessageFormatter::class, 'index']);
 Route::get('/', function () {
   return view('main');
 });
 Route::resource('member', MemberController::class);
 Route::resource('gubun', GubunController::class);
+Route::get('product/jaego', [ProductController::class, 'jaego']);
 Route::resource('product', ProductController::class);
 Route::resource('jangbui', JangbuiController::class);
 Route::resource('jangbuo', JangbuoController::class);
 Route::resource('findproduct', FindproductController::class);
 Route::resource('gigan', GiganController::class);
+Route::get('gigan/excel', [GiganController::class, 'excel']);
 Route::resource('best', BestController::class);
 Route::resource('crosstab', CrosstabController::class);
 Route::resource('chart', ChartController::class);
+Route::resource('picture', PictureController::class);
+// 로그인, 로그아웃
+Route::post('login/check', [LoginController::class, 'check']);
+Route::get('login/logout', [LoginController::class, 'logout']);

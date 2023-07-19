@@ -27,6 +27,11 @@
             });
 
         });
+
+        function make_excel() {
+            form1.action = "{{ url('gigan/excel') }}"
+            form1.submit();
+        }
     </script>
     <form name="form1" action="" method="get">
         <div class="d-inline-flex">
@@ -57,7 +62,6 @@
                 <span class="input-group-text">제품명</span>
                 <select name="text3" class="form-select form-select-sm" onchange="find_text()">
                     <option value="0" selected>전체</option>
-
                     @foreach ($list_product as $row)
                         @if ($row->id == $text3)
                             <option value="{{ $row->id }}" selected>{{ $row->name }}</option>
@@ -66,7 +70,10 @@
                         @endif
                     @endforeach
                 </select>
-
+            </div>
+            <div class="d-inline-flex">
+                <input type="button" value="EXCEL" class="form-control btn btn-sm mycolor1"
+                 onclick="if(confirm('액셀파일로 저장할까요?')) make_excel();">
             </div>
         </div>
     </form>

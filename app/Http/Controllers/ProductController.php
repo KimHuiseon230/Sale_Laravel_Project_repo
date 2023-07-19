@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Gubun;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image; // 네임스페이스(Namespace) 추가
 
 class ProductController extends Controller
 {
@@ -124,10 +125,12 @@ class ProductController extends Controller
         $row->price = $request->input('price');
         $row->jaego = $request->input('jaego');
 
-        if ($request->hasFile('pic')) {
+        if ($request->hasFile('pic'))  //업로드할 파일이 있는 경우
+        {
             $pic = $request->file('pic');
-            $pic_name = $pic->getClientOriginalName();
-            $pic->storeAs('public/product_img', $pic_name);
+            $pic_name = $pic->getClientOriginalName();       //파일이름 
+            $pic->storeAs('public/product_img', $pic_name); //파일저장
+            $pic = Image::make('public/foo.jpg')->resize(320, 240)->insert('public/watermark.png');
             $row->pic = $pic_name;
         }
         $row->save(); // 수정모드 
@@ -140,5 +143,24 @@ class ProductController extends Controller
         $page = request('page') ? request('page') : "1";
         $tmp = $text1 ? "?text1 =$text1&page=$page" : "?page= $page";
         return  $tmp;
+    }
+
+    public function jaego()
+    {
+        DB::statement('drop table if exists temps;');
+        DB::statement('create table temps(
+            id int not null auto_increment,
+            products_id int,
+            jaego int default 0,
+            primary key(id));');
+        DB::statement('update products set jaego=0;');
+        DB::statement('insert into temps (products_id,jaego)
+        select products_id, sum(numi)-sum(numo)
+        from jangbus
+        group by products_id;');
+        DB::statement('update products join temps
+        on products.id =temps.products_id
+        set products.jaego=temps.jaego;');
+        return redirect('product');
     }
 }
