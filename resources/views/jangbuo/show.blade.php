@@ -1,83 +1,58 @@
 @extends('main')
-{{-- 내용 --}}
 @section('content')
     <br>
-    <div class="alert mycolor1" role="alert">사용자</div>
-    <form name="form1" action="{{ route('member.store') }}{{ $tmp }}" method="post">
+    <!-- 사용자 alert -->
+    <div class="alert mycolor1" role="alert">매출</div>
+
+    <!-- 사용자 정보 입력 -->
+    <form action="" name="form1" method="post">
         @csrf
-        <table class="table table-bordered table-sm mymargin5">
+        <table class="table table-sm table-bordered mymargin5">
             <tr>
-                <td width="20%" class="mycolor2">번호</td>
-                <td width="80%" align="left"></td>
+                <td width="20%" class="mycolor2"><span style="color: red;">*</span>날짜</td>
+                <td width="80%" style="text-align: left;">{{ $row->writeday }}</td>
             </tr>
             <tr>
-                <td width="20%" class="mycolor2">
-                    <font color="red">*</font> 이름
-                </td>
-                <td width="80%" align="left">
-                    <div class="d-inline-flex">
-                        <input type="text" name="name" size="20" maxlength="20" value="{{ old('name') }}"
-                            class="form-control form-control-sm" />
-                    </div>
-                    @error('name')
-                        {{ $message }}
-                    @enderror
+                <td width="20%" class="mycolor2"><span style="color: red;">*</span>제품명</td>
+                <td width="80%" style="text-align: left;">
+                    <div class="d-inline-flex">{{ $row->product_name }}</div>
                 </td>
             </tr>
             <tr>
-                <td width="20%" class="mycolor2">
-                    <font color="red">*</font> 아이디
-                </td>
-                <td width="80%" align="left">
-                    <div class="d-inline-flex">
-                        <input type="text" name="uid" size="20" maxlength="20" value="{{ old('uid') }}"
-                            class="form-control form-control-sm" />
-                    </div>
-                    @error('uid')
-                        {{ $message }}
-                    @enderror
+                <td width="20%" class="mycolor2">단가</td>
+                <td width="80%" style="text-align: left;">
+                    <div class="d-inline-flex">{{ number_format($row->price) }}</div>
                 </td>
             </tr>
             <tr>
-                <td width="20%" class="mycolor2">
-                    <font color="red">*</font> 암호
-                </td>
-                <td width="80%" align="left">
-                    <div class="d-inline-flex">
-                        <input type="text" name="pwd" size="20" maxlength="20" value="{{ old('pwd') }}"
-                            class="form-control form-control-sm" />
-                    </div>
-                    @error('pwd')
-                        {{ $message }}
-                    @enderror
+                <td width="20%" class="mycolor2">수량</td>
+                <td width="80%" style="text-align: left;">
+
+                    <div class="d-inline-flex">{{ number_format($row->numo) }}</div>
                 </td>
             </tr>
             <tr>
-                <td width="20%" class="mycolor2">전화</td>
-                <td width="80%" align="left">
-                    <div class="d-inline-flex">
-                        <input type="text" name="tel1" size="3" maxlength="3" value=""
-                            class="form-control form-control-sm" /> -
-                        <input type="text" name="tel2" size="4" maxlength="4" value=""
-                            class="form-control form-control-sm" /> -
-                        <input type="text" name="tel3" size="4" maxlength="4" value=""
-                            class="form-control form-control-sm" />
-                    </div>
+                <td width="20%" class="mycolor2">금액</td>
+                <td width="80%" style="text-align: left;">
+                    <div class="d-inline-flex">{{ number_format($row->prices) }}</div>
                 </td>
             </tr>
             <tr>
-                <td width="20%" class="mycolor2">등급</td>
-                <td width="80%" align="left">
-                    <div class="d-inline-flex">
-                        <input type="radio" name="rank" value="0" checked />&nbsp;직원&nbsp;&nbsp;
-                        <input type="radio" name="rank" value="1" />&nbsp;관리자
-                    </div>
+                <td width="20%" class="mycolor2">비고</td>
+                <td width="80%" style="text-align: left;">
+                    <div class="d-inline-flex">{{ $row->bigo }}</div>
                 </td>
             </tr>
         </table>
-        <div align="center">
-            <input type="submit" value="저장" class="btn btn-sm mycolor1" />&nbsp;
-            <input type="button" value="이전화면" class="btn btn-sm mycolor1" onclick="history.back();" />
+        <div class="d-flex justify-content-center mt-sm-3">
+            <a href="{{ route('jangbuo.edit', $row->id) }}" class="btn btn-sm mycolor1">수정</a>&nbsp;
+            <form action="{{ route('jangbuo.destroy', $row->id) }}">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-sm mycolor1" onclick="return confirm('삭제할까요 ?');">삭제</button> &nbsp;
+            </form>
+            <input type="button" value="이전화면" class="btn btn-sm mycolor1" onclick="history.back();">&nbsp;
         </div>
     </form>
+    </div>
 @endsection

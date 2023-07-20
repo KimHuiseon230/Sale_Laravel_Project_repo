@@ -23,7 +23,7 @@
     @include('inc.nav')
     {{-- 본문부분 --}}
     {{-- 캐러셀 시작 --}}
-    <div class="container">
+    <div class="container mb-2">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -104,7 +104,6 @@
         </div>
     </div>
     {{-- 로그인창 끝 --}}
-
 </div>
 
 </html>

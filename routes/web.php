@@ -13,6 +13,7 @@ use App\Http\Controllers\CrosstabController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PictureController;
+use App\Http\Controllers\AjaxController;
 
 
 use League\CommonMark\Extension\Footnote\Node\FootnoteContainer;
@@ -37,12 +38,14 @@ Route::resource('product', ProductController::class);
 Route::resource('jangbui', JangbuiController::class);
 Route::resource('jangbuo', JangbuoController::class);
 Route::resource('findproduct', FindproductController::class);
-Route::resource('gigan', GiganController::class);
 Route::get('gigan/excel', [GiganController::class, 'excel']);
+Route::resource('gigan', GiganController::class);
 Route::resource('best', BestController::class);
 Route::resource('crosstab', CrosstabController::class);
 Route::resource('chart', ChartController::class);
 Route::resource('picture', PictureController::class);
+Route::resource('ajax', AjaxController::class);
+
 // 로그인, 로그아웃
 Route::post('login/check', [LoginController::class, 'check']);
 Route::get('login/logout', [LoginController::class, 'logout']);

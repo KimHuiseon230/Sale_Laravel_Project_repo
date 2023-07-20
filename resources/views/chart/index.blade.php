@@ -13,7 +13,6 @@
                 format: "YYYY-MM-DD",
                 defaultDate: moment()
             });
-
             $("#text2").datetimepicker({
                 locale: "ko",
                 format: "YYYY-MM-DD",

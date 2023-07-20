@@ -112,26 +112,26 @@ class JangbuiController extends Controller
     {
         $request->validate(
             [
-                'writeday' => 'required|date',
-                'products_id' => 'required',
+                'writeday'     => 'required|date',
+                'sel_products_id' => 'required',
             ],
             [
-                'writeday.required'     => '날짜는 필수 입력입니다.',
-                'products_id.required'  => '제픔명은 필수 입력입니다.',
-                'writeday.date'         => '날짜형식이 올바르지 않습니다.',
+                'writeday.required'           => '날짜는 필수입력입니다.',
+                'sel_products_id.required'       => '제품명은 필수입력입니다.',
+                'writeday.date'               => '날짜형식이 잘못되었습니다.',
             ]
         );
-        $row->io            = 0;
-        $row->writeday      = $request->input('writeday');
-        $row->products_id   = $request->input('products_id');
-        $row->price         = $request->input('price');
-        $row->numi          = $request->input('numi');
-        $row->numo          = 0;
-        $row->prices        = $request->input('prices');
-        $row->bigo          = $request->input('bigo');
 
-        $row->save(); // 수정모드 
-        return redirect('product');
+        $row->io             = 0;
+        $row->writeday       = $request->input('writeday');
+        $row->products_id    = $request->input('products_id');
+        $row->price          = $request->input('price');
+        $row->numi           = $request->input('numi');
+        $row->numo           = 0;
+        $row->prices         = $request->input('prices');
+        $row->bigo           = $request->input('bigo');
+
+        $row->save();
     }
 
     public function qstring()

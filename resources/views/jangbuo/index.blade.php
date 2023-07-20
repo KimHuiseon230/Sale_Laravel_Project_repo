@@ -47,7 +47,7 @@
             <td width="15%">날짜</td>
             <td width="30%">제품명</td>
             <td width="10%">단가</td>
-            <td width="10%">수령</td>
+            <td width="10%">수량</td>
             <td width="15%">금액</td>
             <td width="20%">비고</td>
         </tr>

@@ -20,21 +20,22 @@ class GiganController extends Controller
      */
     public function index(Request $request)
     {
+        $text1 = $request->input('text1');
+        if (!$text1) $text1 = date("Y-m-d", strtotime("-1 month"));
 
-        $text1 = $request->input('text1'); //text1의 값을 알아냄
-        if (!$text1) $text1 = date('Y-m-d', strtotime("-1 month")); // 오늘 기준 1달전
+        $text2 = $request->input('text2');
+        if (!$text2) $text2 = date("Y-m-d");
 
-        $text2 = request('text2');
-        if (!$text2) $text2 = date('Y-m-d'); // 오늘 날짜
-
-        $text3 = request('text3');
-        if (!$text3) $text3 = date('Y-m-d'); // 전체 날짜
+        $text3 = $request->input('text3');
+        if (!$text3) $text3 = 0;
 
         $data['text1'] = $text1;
         $data['text2'] = $text2;
         $data['text3'] = $text3;
         $data['list'] = $this->getlist($text1, $text2, $text3);
+
         $data['list_product'] = $this->getlist_product();
+
         return view('gigan.index', $data);
     }
 

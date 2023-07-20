@@ -53,7 +53,6 @@
             </tr>
         </thead>
         <tbody>
-
             @foreach ($list as $row)
                 <tr>
                     <td align="left" class="mycolor3">{{ $row->product_name }}</td>

@@ -24,7 +24,7 @@
                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                              aria-expanded="false">기초정보</a>
                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                             <li><a class="dropdown-item" href="{{ route('gubun.index') }}">구분</a></li>
+                             <li><a class="dropdown-item" href="{{ route('ajax.index') }}">구분</a></li>
                              <li><a class="dropdown-item" href="{{ route('product.index') }}">제품</a></li>
                              @if (session()->get('rank') == 1)
                              <li>

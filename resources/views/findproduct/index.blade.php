@@ -2,7 +2,6 @@
 @section('content')
     <br>
     <div class="alert mycolor1" role="alert">제품선택</div>
-
     <script>
         function find_text() {
             form1.action = "{{ route('findproduct.index') }}";
@@ -28,7 +27,6 @@
             </div>
         </div>
     </form>
-
     <table class="table table-sm table-bordered table-hover mymargin5">
         <tr class="mycolor2">
             <td width="10%">번호</td>
@@ -48,9 +46,7 @@
                 <td>{{ $row->jaego }}</td>
             </tr>
         @endforeach
-
     </table>
-
     <div class="row">
         <div class="col">
             {{ $list->links('mypagination') }}

@@ -13,7 +13,6 @@
                 format: "YYYY-MM-DD",
                 defaultDate: moment()
             });
-
             $("#text2").datetimepicker({
                 locale: "ko",
                 format: "YYYY-MM-DD",
@@ -25,7 +24,6 @@
             $("#text2").on("dp.change", function(e) {
                 find_text();
             });
-
         });
 
         function make_excel() {
@@ -57,7 +55,7 @@
             </div>
         </div>
         &nbsp;
-        <div class="d-inline-flex">
+        <div class="d-inline-flex" >
             <div class="input-group input-group-sm">
                 <span class="input-group-text">제품명</span>
                 <select name="text3" class="form-select form-select-sm" onchange="find_text()">
@@ -72,7 +70,7 @@
                 </select>
             </div>
             <div class="d-inline-flex">
-                <input type="button" value="EXCEL" class="form-control btn btn-sm mycolor1"
+                <input type="button" value="EXCEL" class="form-control btn btn-sm mycolor1" style="margin-left: 10px"
                  onclick="if(confirm('액셀파일로 저장할까요?')) make_excel();">
             </div>
         </div>

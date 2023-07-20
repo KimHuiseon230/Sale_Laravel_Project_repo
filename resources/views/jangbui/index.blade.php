@@ -7,14 +7,12 @@
             form1.action = "{{ route('jangbui.index') }}";
             form1.submit();
         }
-
         $(function() {
             $('#text1').datetimepicker({
                 locale: "ko",
                 format: "YYYY-MM-DD",
                 defaultDate: moment()
             })
-
             $('#text1').on("dp.change", function(e) {
                 find_text()
             })
@@ -46,7 +44,7 @@
             <td width="15%">날짜</td>
             <td width="30%">제품명</td>
             <td width="10%">단가</td>
-            <td width="10%">수령</td>
+            <td width="10%">수량</td>
             <td width="15%">금액</td>
             <td width="20%">비고</td>
         </tr>
