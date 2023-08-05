@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=gradient&height=200&section=header&text=HUISEON-MARKET&fontSize=55)
+![header](https://capsule-render.vercel.app/api?type=waving&color=gradient&height=200&section=header&text=🥦HUISEON-MARKET&fontSize=55)
 
 ● Summary
 ---------------------------
@@ -20,8 +20,10 @@ PHP, Laravel, HTML, CSS, Javascript를 활용한 판매관리 웹사이트 HUISE
 
 
 ● Fucntion Summary and Information
--------------
+---------------------------
+ 🔗 Click image to view video! 
 
+[![Video Label](http://img.youtube.com/vi/DII_jhS-v5E/0.jpg)](https://youtu.be/DII_jhS-v5E)
 
 ● Version History
 -------------
